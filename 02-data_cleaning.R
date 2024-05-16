@@ -68,8 +68,11 @@ data_short <- rawdata %>%
     grepl("warm", work_facilities) ~ 2,
     grepl("break", work_facilities) ~ 3,
     grepl("no such", work_facilities) ~ 4,
-    .default = 99))
+    .default = 99)) %>%
+  mutate(gen_more_home = as.character(gen_more_home),
+         recycle_more_home = as.character(recycle_more_home))
 
+write.csv(data_short, "/cloud/project/data/processed/data_short.csv")
 
 recycle_less_work_why <- data_short %>%
   filter(recycle_more_home == TRUE) %>%
