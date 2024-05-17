@@ -74,6 +74,16 @@ data_short <- rawdata %>%
 
 write.csv(data_short, "/cloud/project/data/processed/data_short.csv")
 
+# Get column names of the dataframe
+column_names <- names(data_short)
+
+# Convert column names to a single-column dataframe
+dictionary <- data.frame(Column_Names = column_names)
+
+# Write the dataframe to a CSV file
+write.csv(dictionary, "/cloud/project/data/final/dictionary.csv", row.names = FALSE)
+
+
 recycle_less_work_why <- data_short %>%
   filter(recycle_more_home == TRUE) %>%
   select(recycle_less_work_why) %>%

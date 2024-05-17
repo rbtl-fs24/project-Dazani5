@@ -1,15 +1,75 @@
 ---
-title: "index.qmd"
-author: "David Zani"
+title: "How do recycling practices of scientific staff at ETHz differ at work versus at home?"
+author:
+  - name: David Zani
+    orcid: 0009-0000-9673-9210
+    email: dazani@ethz.ch
+    affiliation: 
+      - name: ETH Zurich
+        url: https://ethz.ch/de.html
+date: "June 6, 2024"
+abstract: 
+  The abstract will be placed here. Breaks can be added by hitting return on the keyboard.
+license: "CC BY"
+citation: 
+  container-title: My Blog
+  url: https://www.example.com
 format: html
 editor: visual
+csl: apa.csl
+bibliography: references.bib
+output:
+  html_document:
+    toc: true
+    toc_depth: 3
 ---
 
-## Quarto
+## Introduction
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+3 to 5 sentences introduces the context within which the data was created.
+
+@mcdonald2011green says stuff.
+
+## Methods
+
+describes in 3 to 5 sentences how the data was obtained.
+
+## Results
+
+```{r}
+#| label: load-packages
+
+library(tidyverse)
+library(ggthemes)
+library(gt)
+```
+
+Figures and tables in Results section are interpreted with 2 to 3 sentences each.
+
+at least two data visualisations.
+
+at least one table with summary statistics (e.g. count, mean, median, standard deviation, etc.).
+
+## Conclusions
+
+Conclusions concisely summarize findings in a bullet point format.
+
+## References
+
+includes at least 3 citations using a bibliography.bib file exported from a collection of references on Zotero.
 
 ## Running Code
+
+See @tbl-text for data.
+
+```{r}
+#| label: tbl-text
+#| tbl-cap: Some data
+
+#head(distance_long) %>%
+#  gt()
+
+```
 
 When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
 
