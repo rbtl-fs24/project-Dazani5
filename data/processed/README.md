@@ -14,7 +14,7 @@
 - Email: dazani@ethz.ch
 
 
-3.  Date of data collection (single date, range, approximate date): 20240523
+3.  Date of data collection: 22 May 2024 - 31 May 2024
 
 4.  Geographic location of data collection: Zurich, Switzerland
 

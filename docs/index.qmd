@@ -1,5 +1,5 @@
 ---
-title: "How do recycling practices of scientific staff at ETHz differ at work versus at home?"
+title: "How do recycling practices of scientific staff at ETH Zurich differ at work versus at home?"
 author:
   - name: David Zani
     orcid: 0009-0000-9673-9210
@@ -11,9 +11,6 @@ date: "June 6, 2024"
 abstract: 
   The abstract will be placed here. Breaks can be added by hitting return on the keyboard.
 license: "CC BY"
-citation: 
-  container-title: My Blog
-  url: https://www.example.com
 format: html
 editor: visual
 csl: apa.csl
@@ -26,62 +23,257 @@ output:
 
 ## Introduction
 
-3 to 5 sentences introduces the context within which the data was created.
+@mcdonald2011green found that Scottish commercial waste was double the domestic waste, but that workplace waste studies are less common than studies analyzing recycling at home. @oke2015workplace also found a focus on at-home recycling, so they reviewed 51 previous studies to fill the gap in workplace waste streams. They found none in Europe outside the UK. @zotero-1430 outline the importance of organisations becoming more environmentally friendly and aware, led by programs and initiatives, but conclude "going green comes down to individual behavior" (p. 1).
 
-@mcdonald2011green says stuff.
+Against this background, this project collects waste generation and recycling behavior data from scientific staff at universities, both at their place of work and at home, to compare the behaviors. This project was conducted as part of the lecture series "Research Beyond the Lab" at ETH Zurich.
 
 ## Methods
 
-describes in 3 to 5 sentences how the data was obtained.
+Data on individual waste behavior was collected through an online survey. The survey was designed to answer the specific research question "How do recycling practices of scientific staff at ETH Zurich differ at work versus at home?" The survey was emailed to 20 individuals working at ETH Zurich; 10 individuals responded.
+
+The data was analysed using the open-source statistical software R.
 
 ## Results
 
 ```{r}
-#| label: load-packages
+#| echo: false
+#| warning: false
 
-library(tidyverse)
-library(ggthemes)
+library(ggplot2)
+library(tidyr)
 library(gt)
+library(knitr)
+library(forcats)
+library(dplyr)
+
+data_short <- read.csv("/cloud/project/data/processed/data_short.csv")
+
+generation_long <- data_short %>%
+  select(contains("home_generate"),
+         contains("work_generate"),
+         contains("work_recycle"),
+         contains("home_recycle")) %>%
+  mutate(id = row_number()) %>%
+    filter(id != 1) %>%
+  pivot_longer(cols = -id, names_to = "var", values_to = "value") %>%
+  mutate(location = case_when(
+    grepl("home", var) ~ "Home",
+    grepl("work", var) ~ "Work")) %>%
+  mutate(material = case_when(
+    grepl("alu", var) ~ "Aluminum",
+    grepl("pet", var) ~ "PET",
+    grepl("glass", var) ~ "Glass",
+    grepl("cardboard", var) ~ "Cardboard",
+    grepl("paper", var) ~ "Paper",
+    grepl("plastic", var) ~ "Plastic",
+    grepl("electric", var) ~ "Electric",
+    grepl("organic", var) ~ "Organic",
+    grepl("general", var) ~ "General")) %>%
+  mutate(activity = case_when(
+    grepl("generate", var) ~ "generation",
+    grepl("recycle", var) ~ "recycling")) %>%
+  select(-var) %>%
+  pivot_wider(names_from = activity, values_from = value, values_fn = list) %>%
+  mutate(generation = case_when(
+    generation == "Less than 1 piece" ~ "<1",
+    generation == "1-2 pieces" ~ "1-2",
+    generation == "3-5 pieces" ~ "3-5",
+    generation == "More than 5 pieces" ~ ">5",
+    generation == "Don't know" ~ "Don't know" )) %>%
+  mutate(recycling = case_when(
+    recycling == "Never" ~ "Never",
+    recycling == "10% of the time" ~ "10%",
+    recycling == "30% of the time" ~ "30%",
+    recycling == "60% of the time" ~ "60%",
+    recycling == "90% of the time" ~ "90%",
+    recycling == "Always" ~ "Always",
+    recycling == "Don't know" ~ "Don't know")) %>%
+  mutate(generation = as.character(generation),
+         recycling = as.character(recycling)) %>%
+  mutate(generation = factor(generation, levels = c("<1", "1-2", "3-5", ">5", "Don't know")),
+         recycling = factor(recycling, levels = c("Never", "10%", "30%", "60%", "90%", "Always", "Don't know")))
+
+facility_more <- data_short %>%
+  select(("work_facilities"),
+         ("work_waste_knowledge"),
+         ("home_waste_knowledge"),
+         ("gen_more_home"),
+         ("recycle_more_home")) %>%
+  mutate(gen_more_home = case_when(
+    gen_more_home == "TRUE" ~ "True",
+    gen_more_home ==  "FALSE" ~ "False",
+    TRUE ~ gen_more_home
+  )) %>%
+  mutate(recycle_more_home = case_when(
+    recycle_more_home == "TRUE" ~ "True",
+    recycle_more_home ==  "FALSE" ~ "False",
+    TRUE ~ recycle_more_home
+  ))
 ```
 
-Figures and tables in Results section are interpreted with 2 to 3 sentences each.
+@tbl-gen shows where participants thought they generated more waste. The majority of participants stated they generated more waste at home.
 
-at least two data visualisations.
+```{r}
+#| label: tbl-gen 
+#| tbl-cap: Waste generation at home versus at the office  
+#| warning: false
 
-at least one table with summary statistics (e.g. count, mean, median, standard deviation, etc.).
+
+facility_more %>%
+  group_by(gen_more_home) %>%
+  summarise(count = n()) %>%
+  mutate(gen_more_home = factor(gen_more_home,
+                                levels = c("True",
+                                           "False",
+                                           "The same for both locations",
+                                           "I don't know"))) %>%
+  arrange(gen_more_home) %>%  # Arrange by the factor levels
+  rename("Generate more waste at home?" = gen_more_home,
+         "Answers" = count) %>%
+  gt()
+
+```
+
+@tbl-rec shows where participants thought they recycled more waste. About half said they recycled more often at home; a quarter more at work; and a quarter recycled the same at both locations.
+
+```{r}
+#| label: tbl-rec
+#| tbl-cap: Waste recycling at home versus at the office 
+#| warning: false
+
+
+facility_more %>%
+  group_by(recycle_more_home) %>%
+  summarise(count = n()) %>%
+  mutate(recycle_more_home = factor(recycle_more_home,
+                                levels = c("True",
+                                           "False",
+                                           "The same for both locations",
+                                           "I don't know"))) %>%
+  arrange(recycle_more_home) %>%  # Arrange by the factor levels
+  rename("Recycle more waste at home?" = recycle_more_home,
+         "Answers" = count) %>%
+  gt()
+```
+
+@fig-location shows the results of waste generation and recycling by material and location. It can be seen that, in general, participants who generated more waste also recycled more frequently. The recycling frequency varied widely amongst participants; for example, participants who generated 1-2 pieces of aluminum waste per day recycled anywhere from "Never" to "Always". Organic, paper, and plastic waste was generated most often, while electronic waste was generated very rarely (all participants generated less than one piece per day).
+
+```{r}
+#| label: fig-location
+#| fig-cap: Waste generation and recycling by material and location. One piece of waste could be one aluminum can, a piece of paper, a bottle, etc.
+#| warning: false
+ggplot(generation_long %>% filter(!is.na(recycling)), 
+       aes(x = generation, y = recycling, shape = location)) +
+  geom_point(color = "black", size = 3) +
+  facet_wrap(~material, ncol = 2) +
+  labs(
+    title = NULL,  # If you don't want a title
+    x = "Generation (pieces per day)",
+    y = "Recycling frequency",
+    shape = "Location"
+  ) +
+  scale_shape_manual(values = c(1, 4)) +  # Shapes: 1 for circle, 4 for X
+  theme_minimal()
+```
+
+```{r}
+#| echo: false
+#| warning: false
+
+distance_long <- data_short %>%
+  select(contains("work_dist"),
+         contains("work_recycle")) %>%
+  mutate(id = row_number()) %>%
+  pivot_longer(cols = -id, names_to = "var", values_to = "value") %>%
+  mutate(material = case_when(
+    grepl("alu", var) ~ "Aluminum",
+    grepl("pet", var) ~ "PET",
+    grepl("glass", var) ~ "Glass",
+    grepl("cardboard", var) ~ "Cardboard",
+    grepl("paper", var) ~ "Paper",
+    grepl("plastic", var) ~ "Plastic",
+    grepl("electric", var) ~ "Electric",
+    grepl("organic", var) ~ "Organic",
+    grepl("general", var) ~ "General")) %>%
+  mutate(activity = case_when(
+    grepl("dist", var) ~ "distance",
+    grepl("recycle", var) ~ "recycling")) %>%
+  select(-var) %>%
+  pivot_wider(names_from = activity, values_from = value, values_fn = list) %>%
+  mutate(recycling = case_when(
+    recycling == "Never" ~ "Never",
+    recycling == "10% of the time" ~ "10%",
+    recycling == "30% of the time" ~ "30%",
+    recycling == "60% of the time" ~ "60%",
+    recycling == "90% of the time" ~ "90%",
+    recycling == "Always" ~ "Always",
+    recycling == "Don't know" ~ "Don't know")) %>%
+  mutate(distance = as.character(distance),
+         recycling = as.character(recycling)) %>%
+  mutate(recycling = factor(recycling, levels = c("Never", "10%", "30%", "60%", "90%", "Always", "Don't know"))) %>%
+  mutate(distance = factor(distance, levels = c("0-5 meters", "5-20 meters", "20-50 meters", "50-100 meters", "Over 100 meters", "Don't know")),
+         distance = fct_recode(distance,
+                               "0-5" = "0-5 meters",
+                               "5-20" = "5-20 meters",
+                               "20-50" = "20-50 meters",
+                               "50-100" = "50-100 meters",
+                               "Over 100" = "Over 100 meters",
+                               "Don't know" = "Don't know")) %>%
+  mutate(distance_cont = case_when(
+    distance == "0-5 meters" ~ 2.5,
+    distance == "5-20 meters" ~ 12.5,
+    distance == "20-50 meters" ~ 35,
+    distance == "50-100 meters" ~ 75,
+    distance == "Over 100 meters" ~ 125,
+    distance == "Don't know" ~ NA)) %>%
+  mutate(recycling_cont = case_when(
+    recycling == "Never" ~ 0,
+    recycling == "10% of the time" ~ 10,
+    recycling == "30% of the time" ~ 30,
+    recycling == "60% of the time" ~ 60,
+    recycling == "90% of the time" ~ 90,
+    recycling == "Always" ~ 100,
+    recycling == "Don't know" ~ NA))
+
+```
+
+@fig-distance shows the results of waste recycling by distance to the closest recycling bin. It can be seen that, in general, there is no connection between distance to a recycling bin and the recycling frequency. In other words, participants close and far from bins both recycled "Always" and "Never". The PET bin was most frequently very close to participant workplaces, while electronic waste bins were the farthest away. Only for paper waste did all participants know where the recycle bin is located.
+
+```{r}
+#| label: fig-distance
+#| fig-cap: Recycling by distance to bin
+#| warning: false
+
+
+ggplot(distance_long %>% filter(material != "General",
+                                !is.na(distance)),
+       aes(x=distance, y=recycling, color = material)) +
+  geom_point() +
+  facet_wrap(~material, ncol = 2) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = -45, hjust = 0),
+        legend.position = "none") +
+  labs(
+    title = NULL,  # If you don't want a title
+    x = "Distance to bin (meters)",
+    y = "Recycling frequency",
+    color = "Material"
+  )
+
+```
 
 ## Conclusions
 
-Conclusions concisely summarize findings in a bullet point format.
+The main findings of this study are as follows:
+
+-   Scientific staff generate more waste and recycle more frequently at home than at the workplace, indicating that recycling incentives should target individuals' homes before the workplace.
+
+-   Survey participants who generated more waste also recycled more frequently, indicating that people who generate more waste also are more aware of their recycling behavior.
+
+-   Recycling frequency was not clearly connected to distance to the closest recycling bin, indicating that providing more bins may not be an efficient solution to improving recycling behavior.
+
+These findings are qualitative in nature, as more responses would be needed for quantitative and statistically significant analyses and findings.
 
 ## References
 
 includes at least 3 citations using a bibliography.bib file exported from a collection of references on Zotero.
-
-## Running Code
-
-See @tbl-text for data.
-
-```{r}
-#| label: tbl-text
-#| tbl-cap: Some data
-
-#head(distance_long) %>%
-#  gt()
-
-```
-
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
-
-```{r}
-1 + 1
-```
-
-You can add options to executable code like this
-
-```{r}
-#| echo: false
-2 * 2
-```
-
-The `echo: false` option disables the printing of code (only output is displayed).
