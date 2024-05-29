@@ -23,17 +23,11 @@ output:
 
 ## Introduction
 
-@mcdonald2011green found that Scottish commercial waste was double the domestic waste, but that workplace waste studies are less common than studies analyzing recycling at home. @oke2015workplace also found a focus on at-home recycling, so they reviewed 51 previous studies to fill the gap in workplace waste streams. They found none in Europe outside the UK. @zotero-1430 outline the importance of organisations becoming more environmentally friendly and aware, led by programs and initiatives, but conclude "going green comes down to individual behavior" (p. 1).
+Waste production and recycling is an important issue in global sustainability efforts. @mcdonald2011green found that Scottish commercial waste was double the domestic waste, but that workplace waste studies are less common than studies analyzing recycling at home. @oke2015workplace also found a lacking focus on at-home recycling, so they reviewed 51 previous studies to fill the gap in workplace waste streams. They found no studies in Europe outside the UK. @zotero-1430 outline the importance of organisations becoming more environmentally friendly and aware, led by programs and initiatives, but conclude "going green comes down to individual behavior" (p. 1).
 
-Against this background, this project collects waste generation and recycling behavior data from scientific staff at universities, both at their place of work and at home, to compare the behaviors. This project was conducted as part of the lecture series "Research Beyond the Lab" at ETH Zurich.
+Against this background, this project collects waste generation and recycling behavior data from scientific staff at universities, both at their place of work and at home, to compare the behaviors. This project was conducted as part of the lecture series "[Research Beyond the Lab](https://rbtl-fs24.github.io/website/)" at [ETH Zurich](https://ethz.ch/de.html).
 
 ## Methods
-
-Data on individual waste behavior was collected through an online survey. The survey was designed to answer the specific research question "How do recycling practices of scientific staff at ETH Zurich differ at work versus at home?" The survey was emailed to 20 individuals working at ETH Zurich; 10 individuals responded.
-
-The data was analysed using the open-source statistical software R.
-
-## Results
 
 ```{r}
 #| echo: false
@@ -111,7 +105,13 @@ facility_more <- data_short %>%
   ))
 ```
 
-@tbl-gen shows where participants thought they generated more waste. The majority of participants stated they generated more waste at home.
+Data on individual waste behavior was collected through an online survey. The survey was designed to answer the specific research question "How do recycling practices of scientific staff at ETH Zurich differ at work versus at home?" The survey was emailed to 20 individuals working at ETH Zurich; `r nrow(data_short)` individuals completed the survey. The survey can be viewed [here](https://forms.gle/yrQm4BFtMCyG7k7a6).
+
+The data was analysed using the open-source statistical software R.
+
+## Results
+
+@tbl-gen shows where participants thought they generated more waste. All participants stated they generated more waste at home. Only one participants responded that they produced the same amount of waste at home and at their workplace. This suggests that targeting recycling practices at home is more important when trying to improve sustainability practices.
 
 ```{r}
 #| label: tbl-gen 
@@ -134,7 +134,7 @@ facility_more %>%
 
 ```
 
-@tbl-rec shows where participants thought they recycled more waste. About half said they recycled more often at home; a quarter more at work; and a quarter recycled the same at both locations.
+@tbl-rec shows where participants thought they recycled more waste. About half said they recycled more often at home; a quarter more at work; and a quarter recycled the same at both locations. This suggests that recycling practices at the workplace could be further improved.
 
 ```{r}
 #| label: tbl-rec
@@ -156,7 +156,7 @@ facility_more %>%
   gt()
 ```
 
-@fig-location shows the results of waste generation and recycling by material and location. It can be seen that, in general, participants who generated more waste also recycled more frequently. The recycling frequency varied widely amongst participants; for example, participants who generated 1-2 pieces of aluminum waste per day recycled anywhere from "Never" to "Always". Organic, paper, and plastic waste was generated most often, while electronic waste was generated very rarely (all participants generated less than one piece per day).
+@fig-location shows the results of waste generation and recycling by material and location. It can be seen that, in general, there is no connection between how much waste participants generated and recycled. The recycling frequency varied widely among participants; for example, participants who generated 1-2 pieces of aluminum waste per day recycled anywhere from "Never" to "Always". Organic, paper, and plastic waste was generated most often, while electronic waste was generated very rarely (all participants generated less than one piece per day). Paper was the only material for which no participant stated that they never recycled it.
 
 ```{r}
 #| label: fig-location
@@ -241,7 +241,7 @@ distance_long <- data_short %>%
 
 ```{r}
 #| label: fig-distance
-#| fig-cap: Recycling by distance to bin
+#| fig-cap: Recycling frequency by distance to bin.
 #| warning: false
 
 
@@ -268,7 +268,7 @@ The main findings of this study are as follows:
 
 -   Scientific staff generate more waste and recycle more frequently at home than at the workplace, indicating that recycling incentives should target individuals' homes before the workplace.
 
--   Survey participants who generated more waste also recycled more frequently, indicating that people who generate more waste also are more aware of their recycling behavior.
+-   Waste generation and recycling frequency were not clearly connected, indicating that participant awareness of recycling practices are not connected to how much waste they generate.
 
 -   Recycling frequency was not clearly connected to distance to the closest recycling bin, indicating that providing more bins may not be an efficient solution to improving recycling behavior.
 

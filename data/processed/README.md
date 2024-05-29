@@ -4,22 +4,23 @@
 
 1.  Title of Dataset:  Scientific staff waste behavior
 
-2.  Author Information: David Zani
-
-**Author A**
+2.  Author Information:
 
 - First name: David
 - Surname: Zani
 - ORCID iD: 0009-0000-9673-9210
 - Email: dazani@ethz.ch
 
+3.  This project aims to answer the question "How do recycling practices of scientific staff at ETH Zurich differ at work versus at home?"
 
-3.  Date of data collection: 22 May 2024 - 31 May 2024
+4.  Date of data collection: 22 May 2024 - 31 May 2024
 
-4.  Geographic location of data collection: Zurich, Switzerland
+5.  Geographic location of data collection: Zurich, Switzerland
 
-5.  Information about funding sources that supported the collection of
+6.  Information about funding sources that supported the collection of
     the data: No funding sources.
+    
+7.  Prerequisites: tidyr
 
 ## Sharing / access information
 

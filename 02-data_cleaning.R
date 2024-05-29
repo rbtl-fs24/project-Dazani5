@@ -1,4 +1,3 @@
-library(dplyr)
 library(tidyr)
 
 data_short <- rawdata %>%
@@ -74,77 +73,77 @@ data_short <- rawdata %>%
 
 write.csv(data_short, "/cloud/project/data/processed/data_short.csv")
 
-# Get column names of the dataframe
-column_names <- names(data_short)
-
-# Convert column names to a single-column dataframe
-dictionary <- data.frame(Column_Names = column_names) %>%
-  rename("variable_name" = Column_Names) %>%
-  mutate(description = c(
-    "Time the survey was submitted",
-    "University at which the respondent works",
-    "Research group at which the respondent works",
-    "Level of employment",
-    "Number of days spent in the office per week",
-    "Cooking facilities available at the office",
-    "Knowledge of recycling facilities at the office",
-    "Knowledge of recycling facilities at home",
-    "Generation of waste at home (aluminum), in pieces per day",
-    "Generation of waste at home (PET), in pieces per day",
-    "Generation of waste at home (glass), in pieces per day",
-    "Generation of waste at home (cardboard), in pieces per day",
-    "Generation of waste at home (paper), in pieces per day",
-    "Generation of waste at home (plastic), in pieces per day",
-    "Generation of waste at home (electric), in pieces per day",
-    "Generation of waste at home (organic), in pieces per day",
-    "Generation of waste at home (general), in pieces per day",
-    "Generation of waste at the office (aluminum), in pieces per day",
-    "Generation of waste at the office (PET), in pieces per day",
-    "Generation of waste at the office (glass), in pieces per day",
-    "Generation of waste at the office (cardboard), in pieces per day",
-    "Generation of waste at the office (paper), in pieces per day",
-    "Generation of waste at the office (plastic), in pieces per day",
-    "Generation of waste at the office (electric), in pieces per day",
-    "Generation of waste at the office (organic), in pieces per day",
-    "Generation of waste at the office (general), in pieces per day",
-    "Recycling of waste at home (aluminum), in percent",
-    "Recycling of waste at home (PET), in percent",
-    "Recycling of waste at home (glass), in percent",
-    "Recycling of waste at home (cardboard), in percent",
-    "Recycling of waste at home (paper), in percent",
-    "Recycling of waste at home (plastic), in percent",
-    "Recycling of waste at home (electric), in percent",
-    "Recycling of waste at home (organic), in percent",
-    "Recycling of waste at the office (aluminum), in percent",
-    "Recycling of waste at the office (PET), in percent",
-    "Recycling of waste at the office (glass), in percent",
-    "Recycling of waste at the office (cardboard), in percent",
-    "Recycling of waste at the office (paper), in percent",
-    "Recycling of waste at the office (plastic), in percent",
-    "Recycling of waste at the office (electric), in percent",
-    "Recycling of waste at the office (organic), in percent",
-    "Whether the participant generates more waste at home versus the office",
-    "Why the participant generates more waste at home versus the office",
-    "Why the participant generates more waste at the office versus at home",
-    "Whether the participant recycles more waste at home versus the office",
-    "Why the participant recycles less waste at the office versus at home",
-    "Why the participant recycles less waste at home versus at the office",
-    "Additional comments the participant may have",
-    "Walking distance to aluminum recycling bin (in meters) at the office",
-    "Walking distance to PET recycling bin (in meters) at the office",
-    "Walking distance to glass recycling bin (in meters) at the office",
-    "Walking distance to cardboard recycling bin (in meters) at the office",
-    "Walking distance to paper recycling bin (in meters) at the office",
-    "Walking distance to plastic recycling bin (in meters) at the office",
-    "Walking distance to electric recycling bin (in meters) at the office",
-    "Walking distance to organic recycling bin (in meters) at the office",
-    "Walking distance to general waste bin (in meters) at the office",
-    "A code for the cooking facility available at work: 1 = full facility to cook; 2 = can only heat food; 3 = break room only without food preparation or heating; 4 = no break room at all"
-  ))
-
-
-# Write the dataframe to a CSV file
-write.csv(dictionary, "/cloud/project/data/processed/dictionary.csv", row.names = FALSE)
+# # Get column names of the dataframe
+# column_names <- names(data_short)
+# 
+# # Convert column names to a single-column dataframe
+# dictionary <- data.frame(Column_Names = column_names) %>%
+#   rename("variable_name" = Column_Names) %>%
+#   mutate(description = c(
+#     "Time the survey was submitted",
+#     "University at which the respondent works",
+#     "Research group at which the respondent works",
+#     "Level of employment",
+#     "Number of days spent in the office per week",
+#     "Cooking facilities available at the office",
+#     "Knowledge of recycling facilities at the office",
+#     "Knowledge of recycling facilities at home",
+#     "Generation of waste at home (aluminum), in pieces per day",
+#     "Generation of waste at home (PET), in pieces per day",
+#     "Generation of waste at home (glass), in pieces per day",
+#     "Generation of waste at home (cardboard), in pieces per day",
+#     "Generation of waste at home (paper), in pieces per day",
+#     "Generation of waste at home (plastic), in pieces per day",
+#     "Generation of waste at home (electric), in pieces per day",
+#     "Generation of waste at home (organic), in pieces per day",
+#     "Generation of waste at home (general), in pieces per day",
+#     "Generation of waste at the office (aluminum), in pieces per day",
+#     "Generation of waste at the office (PET), in pieces per day",
+#     "Generation of waste at the office (glass), in pieces per day",
+#     "Generation of waste at the office (cardboard), in pieces per day",
+#     "Generation of waste at the office (paper), in pieces per day",
+#     "Generation of waste at the office (plastic), in pieces per day",
+#     "Generation of waste at the office (electric), in pieces per day",
+#     "Generation of waste at the office (organic), in pieces per day",
+#     "Generation of waste at the office (general), in pieces per day",
+#     "Recycling of waste at home (aluminum), in percent",
+#     "Recycling of waste at home (PET), in percent",
+#     "Recycling of waste at home (glass), in percent",
+#     "Recycling of waste at home (cardboard), in percent",
+#     "Recycling of waste at home (paper), in percent",
+#     "Recycling of waste at home (plastic), in percent",
+#     "Recycling of waste at home (electric), in percent",
+#     "Recycling of waste at home (organic), in percent",
+#     "Recycling of waste at the office (aluminum), in percent",
+#     "Recycling of waste at the office (PET), in percent",
+#     "Recycling of waste at the office (glass), in percent",
+#     "Recycling of waste at the office (cardboard), in percent",
+#     "Recycling of waste at the office (paper), in percent",
+#     "Recycling of waste at the office (plastic), in percent",
+#     "Recycling of waste at the office (electric), in percent",
+#     "Recycling of waste at the office (organic), in percent",
+#     "Whether the participant generates more waste at home versus the office",
+#     "Why the participant generates more waste at home versus the office",
+#     "Why the participant generates more waste at the office versus at home",
+#     "Whether the participant recycles more waste at home versus the office",
+#     "Why the participant recycles less waste at the office versus at home",
+#     "Why the participant recycles less waste at home versus at the office",
+#     "Additional comments the participant may have",
+#     "Walking distance to aluminum recycling bin (in meters) at the office",
+#     "Walking distance to PET recycling bin (in meters) at the office",
+#     "Walking distance to glass recycling bin (in meters) at the office",
+#     "Walking distance to cardboard recycling bin (in meters) at the office",
+#     "Walking distance to paper recycling bin (in meters) at the office",
+#     "Walking distance to plastic recycling bin (in meters) at the office",
+#     "Walking distance to electric recycling bin (in meters) at the office",
+#     "Walking distance to organic recycling bin (in meters) at the office",
+#     "Walking distance to general waste bin (in meters) at the office",
+#     "A code for the cooking facility available at work: 1 = full facility to cook; 2 = can only heat food; 3 = break room only without food preparation or heating; 4 = no break room at all"
+#   ))
+# 
+# 
+# # Write the dataframe to a CSV file
+# write.csv(dictionary, "/cloud/project/data/processed/dictionary.csv", row.names = FALSE)
 
 
 # recycle_less_work_why <- data_short %>%
