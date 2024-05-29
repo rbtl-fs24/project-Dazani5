@@ -9,7 +9,7 @@ author:
         url: https://ethz.ch/de.html
 date: "June 6, 2024"
 abstract: 
-  The abstract will be placed here. Breaks can be added by hitting return on the keyboard.
+  Sustainability efforts require individuals to be aware of their waste generation and recycling practices. Literature has shown that workplace waste behavior is not well-understood. This project aims to improve the knowledge of waste generation and recycling behaviors of scientific staff members at ETH Zurich. Results indicate that scientific staff generate and recylc emore waste at home than at their place of work. No connection was found between either the waste generation amount or the proximity of recycling bins at work to the recycling frequency. Recycling bin provision may not be an effective method to increase recycling rates. Further work is needed to capture a larger number of and more diverse participants.
 license: "CC BY"
 format: html
 editor: visual
