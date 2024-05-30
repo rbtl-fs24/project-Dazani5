@@ -93,10 +93,21 @@ div.csl-indent {
 
 </head>
 
-<body class="fullcontent">
+<body>
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods</a></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a></li>
+  <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions">Conclusions</a></li>
+  </ul>
+</nav>
+</div>
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
@@ -137,7 +148,7 @@ div.csl-indent {
 <div>
   <div class="abstract">
     <div class="block-title">Abstract</div>
-    The abstract will be placed here. Breaks can be added by hitting return on the keyboard.
+    Sustainability efforts require individuals to be aware of their waste generation and recycling practices. Literature has shown that workplace waste behavior is not well-understood. This project aims to improve the knowledge of waste generation and recycling behaviors of scientific staff members at ETH Zurich. Results indicate that scientific staff generate and recylc emore waste at home than at their place of work. No connection was found between either the waste generation amount or the proximity of recycling bins at work to the recycling frequency. Recycling bin provision may not be an effective method to increase recycling rates. Further work is needed to capture a larger number of and more diverse participants.
   </div>
 </div>
 
@@ -147,17 +158,17 @@ div.csl-indent {
 
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>Waste production and recycling is an important issue in global sustainability efforts. <span class="citation" data-cites="mcdonald2011green">McDonald (<a href="#ref-mcdonald2011green" role="doc-biblioref">2011</a>)</span> found that Scottish commercial waste was double the domestic waste, but that workplace waste studies are less common than studies analyzing recycling at home. <span class="citation" data-cites="oke2015workplace">Oke (<a href="#ref-oke2015workplace" role="doc-biblioref">2015</a>)</span> also found a lacking focus on at-home recycling, so they reviewed 51 previous studies to fill the gap in workplace waste streams. They found no studies in Europe outside the UK. <span class="citation" data-cites="zotero-1430"> (<a href="#ref-zotero-1430" role="doc-biblioref">n.d.</a>)</span> outline the importance of organisations becoming more environmentally friendly and aware, led by programs and initiatives, but conclude “going green comes down to individual behavior” (p.&nbsp;1).</p>
+<p>Waste production and recycling is an important issue in global sustainability efforts. <span class="citation" data-cites="mcdonald2011green">McDonald (<a href="#ref-mcdonald2011green" role="doc-biblioref">2011</a>)</span> found that Scottish commercial waste was double the domestic waste, but that workplace waste studies are less common than studies analyzing recycling at home. <span class="citation" data-cites="oke2015workplace">Oke (<a href="#ref-oke2015workplace" role="doc-biblioref">2015</a>)</span> also found a lacking focus on at-home recycling, so they reviewed 51 previous studies to fill the gap in workplace waste streams. They found no studies in Europe outside the UK. <span class="citation" data-cites="zotero-1478">Bartlett (<a href="#ref-zotero-1478" role="doc-biblioref">2011</a>)</span> outline the importance of organisations becoming more environmentally friendly and aware, led by programs and initiatives, but conclude “going green comes down to individual behavior” (p.&nbsp;1).</p>
 <p>Against this background, this project collects waste generation and recycling behavior data from scientific staff at universities, both at their place of work and at home, to compare the behaviors. This project was conducted as part of the lecture series “<a href="https://rbtl-fs24.github.io/website/">Research Beyond the Lab</a>” at <a href="https://ethz.ch/de.html">ETH Zurich</a>.</p>
 </section>
 <section id="methods" class="level2">
 <h2 class="anchored" data-anchor-id="methods">Methods</h2>
-<p>Data on individual waste behavior was collected through an online survey. The survey was designed to answer the specific research question “How do recycling practices of scientific staff at ETH Zurich differ at work versus at home?” The survey was emailed to 20 individuals working at ETH Zurich; 11 individuals completed the survey.</p>
+<p>Data on individual waste behavior was collected through an online survey. The survey was designed to answer the specific research question “How do recycling practices of scientific staff at ETH Zurich differ at work versus at home?” The survey was emailed to 20 individuals working at ETH Zurich; 11 individuals completed the survey. The survey can be viewed <a href="https://forms.gle/yrQm4BFtMCyG7k7a6">here</a>.</p>
 <p>The data was analysed using the open-source statistical software R.</p>
 </section>
 <section id="results" class="level2">
 <h2 class="anchored" data-anchor-id="results">Results</h2>
-<p><a href="#tbl-gen" class="quarto-xref">Table&nbsp;1</a> shows where participants thought they generated more waste. The majority of participants stated they generated more waste at home.</p>
+<p><a href="#tbl-gen" class="quarto-xref">Table&nbsp;1</a> shows where participants thought they generated more waste. All participants stated they generated more waste at home. Only one participants responded that they produced the same amount of waste at home and at their workplace. This suggests that targeting recycling practices at home is more important when trying to improve sustainability practices.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>facility_more <span class="sc">%&gt;%</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(gen_more_home) <span class="sc">%&gt;%</span></span>
@@ -179,23 +190,23 @@ Table&nbsp;1: Waste generation at home versus at the office
 <div aria-describedby="tbl-gen-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <div>
-<div id="pgchvjbcrd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#pgchvjbcrd table {
+<div id="ikusuuqlht" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ikusuuqlht table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#pgchvjbcrd thead, #pgchvjbcrd tbody, #pgchvjbcrd tfoot, #pgchvjbcrd tr, #pgchvjbcrd td, #pgchvjbcrd th {
+#ikusuuqlht thead, #ikusuuqlht tbody, #ikusuuqlht tfoot, #ikusuuqlht tr, #ikusuuqlht td, #ikusuuqlht th {
   border-style: none;
 }
 
-#pgchvjbcrd p {
+#ikusuuqlht p {
   margin: 0;
   padding: 0;
 }
 
-#pgchvjbcrd .gt_table {
+#ikusuuqlht .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -221,12 +232,12 @@ Table&nbsp;1: Waste generation at home versus at the office
   border-left-color: #D3D3D3;
 }
 
-#pgchvjbcrd .gt_caption {
+#ikusuuqlht .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#pgchvjbcrd .gt_title {
+#ikusuuqlht .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -238,7 +249,7 @@ Table&nbsp;1: Waste generation at home versus at the office
   border-bottom-width: 0;
 }
 
-#pgchvjbcrd .gt_subtitle {
+#ikusuuqlht .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -250,7 +261,7 @@ Table&nbsp;1: Waste generation at home versus at the office
   border-top-width: 0;
 }
 
-#pgchvjbcrd .gt_heading {
+#ikusuuqlht .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -262,13 +273,13 @@ Table&nbsp;1: Waste generation at home versus at the office
   border-right-color: #D3D3D3;
 }
 
-#pgchvjbcrd .gt_bottom_border {
+#ikusuuqlht .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#pgchvjbcrd .gt_col_headings {
+#ikusuuqlht .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -283,7 +294,7 @@ Table&nbsp;1: Waste generation at home versus at the office
   border-right-color: #D3D3D3;
 }
 
-#pgchvjbcrd .gt_col_heading {
+#ikusuuqlht .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -303,7 +314,7 @@ Table&nbsp;1: Waste generation at home versus at the office
   overflow-x: hidden;
 }
 
-#pgchvjbcrd .gt_column_spanner_outer {
+#ikusuuqlht .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -315,15 +326,15 @@ Table&nbsp;1: Waste generation at home versus at the office
   padding-right: 4px;
 }
 
-#pgchvjbcrd .gt_column_spanner_outer:first-child {
+#ikusuuqlht .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#pgchvjbcrd .gt_column_spanner_outer:last-child {
+#ikusuuqlht .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#pgchvjbcrd .gt_column_spanner {
+#ikusuuqlht .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -335,11 +346,11 @@ Table&nbsp;1: Waste generation at home versus at the office
   width: 100%;
 }
 
-#pgchvjbcrd .gt_spanner_row {
+#ikusuuqlht .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#pgchvjbcrd .gt_group_heading {
+#ikusuuqlht .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -365,7 +376,7 @@ Table&nbsp;1: Waste generation at home versus at the office
   text-align: left;
 }
 
-#pgchvjbcrd .gt_empty_group_heading {
+#ikusuuqlht .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -380,15 +391,15 @@ Table&nbsp;1: Waste generation at home versus at the office
   vertical-align: middle;
 }
 
-#pgchvjbcrd .gt_from_md > :first-child {
+#ikusuuqlht .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#pgchvjbcrd .gt_from_md > :last-child {
+#ikusuuqlht .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#pgchvjbcrd .gt_row {
+#ikusuuqlht .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -407,7 +418,7 @@ Table&nbsp;1: Waste generation at home versus at the office
   overflow-x: hidden;
 }
 
-#pgchvjbcrd .gt_stub {
+#ikusuuqlht .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -420,7 +431,7 @@ Table&nbsp;1: Waste generation at home versus at the office
   padding-right: 5px;
 }
 
-#pgchvjbcrd .gt_stub_row_group {
+#ikusuuqlht .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -434,15 +445,15 @@ Table&nbsp;1: Waste generation at home versus at the office
   vertical-align: top;
 }
 
-#pgchvjbcrd .gt_row_group_first td {
+#ikusuuqlht .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#pgchvjbcrd .gt_row_group_first th {
+#ikusuuqlht .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#pgchvjbcrd .gt_summary_row {
+#ikusuuqlht .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -452,16 +463,16 @@ Table&nbsp;1: Waste generation at home versus at the office
   padding-right: 5px;
 }
 
-#pgchvjbcrd .gt_first_summary_row {
+#ikusuuqlht .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#pgchvjbcrd .gt_first_summary_row.thick {
+#ikusuuqlht .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#pgchvjbcrd .gt_last_summary_row {
+#ikusuuqlht .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -471,7 +482,7 @@ Table&nbsp;1: Waste generation at home versus at the office
   border-bottom-color: #D3D3D3;
 }
 
-#pgchvjbcrd .gt_grand_summary_row {
+#ikusuuqlht .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -481,7 +492,7 @@ Table&nbsp;1: Waste generation at home versus at the office
   padding-right: 5px;
 }
 
-#pgchvjbcrd .gt_first_grand_summary_row {
+#ikusuuqlht .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -491,7 +502,7 @@ Table&nbsp;1: Waste generation at home versus at the office
   border-top-color: #D3D3D3;
 }
 
-#pgchvjbcrd .gt_last_grand_summary_row_top {
+#ikusuuqlht .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -501,11 +512,11 @@ Table&nbsp;1: Waste generation at home versus at the office
   border-bottom-color: #D3D3D3;
 }
 
-#pgchvjbcrd .gt_striped {
+#ikusuuqlht .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#pgchvjbcrd .gt_table_body {
+#ikusuuqlht .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -514,7 +525,7 @@ Table&nbsp;1: Waste generation at home versus at the office
   border-bottom-color: #D3D3D3;
 }
 
-#pgchvjbcrd .gt_footnotes {
+#ikusuuqlht .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -528,7 +539,7 @@ Table&nbsp;1: Waste generation at home versus at the office
   border-right-color: #D3D3D3;
 }
 
-#pgchvjbcrd .gt_footnote {
+#ikusuuqlht .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -537,7 +548,7 @@ Table&nbsp;1: Waste generation at home versus at the office
   padding-right: 5px;
 }
 
-#pgchvjbcrd .gt_sourcenotes {
+#ikusuuqlht .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -551,7 +562,7 @@ Table&nbsp;1: Waste generation at home versus at the office
   border-right-color: #D3D3D3;
 }
 
-#pgchvjbcrd .gt_sourcenote {
+#ikusuuqlht .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -559,63 +570,63 @@ Table&nbsp;1: Waste generation at home versus at the office
   padding-right: 5px;
 }
 
-#pgchvjbcrd .gt_left {
+#ikusuuqlht .gt_left {
   text-align: left;
 }
 
-#pgchvjbcrd .gt_center {
+#ikusuuqlht .gt_center {
   text-align: center;
 }
 
-#pgchvjbcrd .gt_right {
+#ikusuuqlht .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#pgchvjbcrd .gt_font_normal {
+#ikusuuqlht .gt_font_normal {
   font-weight: normal;
 }
 
-#pgchvjbcrd .gt_font_bold {
+#ikusuuqlht .gt_font_bold {
   font-weight: bold;
 }
 
-#pgchvjbcrd .gt_font_italic {
+#ikusuuqlht .gt_font_italic {
   font-style: italic;
 }
 
-#pgchvjbcrd .gt_super {
+#ikusuuqlht .gt_super {
   font-size: 65%;
 }
 
-#pgchvjbcrd .gt_footnote_marks {
+#ikusuuqlht .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#pgchvjbcrd .gt_asterisk {
+#ikusuuqlht .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#pgchvjbcrd .gt_indent_1 {
+#ikusuuqlht .gt_indent_1 {
   text-indent: 5px;
 }
 
-#pgchvjbcrd .gt_indent_2 {
+#ikusuuqlht .gt_indent_2 {
   text-indent: 10px;
 }
 
-#pgchvjbcrd .gt_indent_3 {
+#ikusuuqlht .gt_indent_3 {
   text-indent: 15px;
 }
 
-#pgchvjbcrd .gt_indent_4 {
+#ikusuuqlht .gt_indent_4 {
   text-indent: 20px;
 }
 
-#pgchvjbcrd .gt_indent_5 {
+#ikusuuqlht .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -646,7 +657,7 @@ Table&nbsp;1: Waste generation at home versus at the office
 </figure>
 </div>
 </div>
-<p><a href="#tbl-rec" class="quarto-xref">Table&nbsp;2</a> shows where participants thought they recycled more waste. About half said they recycled more often at home; a quarter more at work; and a quarter recycled the same at both locations.</p>
+<p><a href="#tbl-rec" class="quarto-xref">Table&nbsp;2</a> shows where participants thought they recycled more waste. About half said they recycled more often at home; a quarter more at work; and a quarter recycled the same at both locations. This suggests that recycling practices at the workplace could be further improved.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>facility_more <span class="sc">%&gt;%</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(recycle_more_home) <span class="sc">%&gt;%</span></span>
@@ -668,23 +679,23 @@ Table&nbsp;2: Waste recycling at home versus at the office
 <div aria-describedby="tbl-rec-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <div>
-<div id="vmnegukfng" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#vmnegukfng table {
+<div id="vcaokwfkjd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#vcaokwfkjd table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#vmnegukfng thead, #vmnegukfng tbody, #vmnegukfng tfoot, #vmnegukfng tr, #vmnegukfng td, #vmnegukfng th {
+#vcaokwfkjd thead, #vcaokwfkjd tbody, #vcaokwfkjd tfoot, #vcaokwfkjd tr, #vcaokwfkjd td, #vcaokwfkjd th {
   border-style: none;
 }
 
-#vmnegukfng p {
+#vcaokwfkjd p {
   margin: 0;
   padding: 0;
 }
 
-#vmnegukfng .gt_table {
+#vcaokwfkjd .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -710,12 +721,12 @@ Table&nbsp;2: Waste recycling at home versus at the office
   border-left-color: #D3D3D3;
 }
 
-#vmnegukfng .gt_caption {
+#vcaokwfkjd .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#vmnegukfng .gt_title {
+#vcaokwfkjd .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -727,7 +738,7 @@ Table&nbsp;2: Waste recycling at home versus at the office
   border-bottom-width: 0;
 }
 
-#vmnegukfng .gt_subtitle {
+#vcaokwfkjd .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -739,7 +750,7 @@ Table&nbsp;2: Waste recycling at home versus at the office
   border-top-width: 0;
 }
 
-#vmnegukfng .gt_heading {
+#vcaokwfkjd .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -751,13 +762,13 @@ Table&nbsp;2: Waste recycling at home versus at the office
   border-right-color: #D3D3D3;
 }
 
-#vmnegukfng .gt_bottom_border {
+#vcaokwfkjd .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#vmnegukfng .gt_col_headings {
+#vcaokwfkjd .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -772,7 +783,7 @@ Table&nbsp;2: Waste recycling at home versus at the office
   border-right-color: #D3D3D3;
 }
 
-#vmnegukfng .gt_col_heading {
+#vcaokwfkjd .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -792,7 +803,7 @@ Table&nbsp;2: Waste recycling at home versus at the office
   overflow-x: hidden;
 }
 
-#vmnegukfng .gt_column_spanner_outer {
+#vcaokwfkjd .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -804,15 +815,15 @@ Table&nbsp;2: Waste recycling at home versus at the office
   padding-right: 4px;
 }
 
-#vmnegukfng .gt_column_spanner_outer:first-child {
+#vcaokwfkjd .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#vmnegukfng .gt_column_spanner_outer:last-child {
+#vcaokwfkjd .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#vmnegukfng .gt_column_spanner {
+#vcaokwfkjd .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -824,11 +835,11 @@ Table&nbsp;2: Waste recycling at home versus at the office
   width: 100%;
 }
 
-#vmnegukfng .gt_spanner_row {
+#vcaokwfkjd .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#vmnegukfng .gt_group_heading {
+#vcaokwfkjd .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -854,7 +865,7 @@ Table&nbsp;2: Waste recycling at home versus at the office
   text-align: left;
 }
 
-#vmnegukfng .gt_empty_group_heading {
+#vcaokwfkjd .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -869,15 +880,15 @@ Table&nbsp;2: Waste recycling at home versus at the office
   vertical-align: middle;
 }
 
-#vmnegukfng .gt_from_md > :first-child {
+#vcaokwfkjd .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#vmnegukfng .gt_from_md > :last-child {
+#vcaokwfkjd .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#vmnegukfng .gt_row {
+#vcaokwfkjd .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -896,7 +907,7 @@ Table&nbsp;2: Waste recycling at home versus at the office
   overflow-x: hidden;
 }
 
-#vmnegukfng .gt_stub {
+#vcaokwfkjd .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -909,7 +920,7 @@ Table&nbsp;2: Waste recycling at home versus at the office
   padding-right: 5px;
 }
 
-#vmnegukfng .gt_stub_row_group {
+#vcaokwfkjd .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -923,15 +934,15 @@ Table&nbsp;2: Waste recycling at home versus at the office
   vertical-align: top;
 }
 
-#vmnegukfng .gt_row_group_first td {
+#vcaokwfkjd .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#vmnegukfng .gt_row_group_first th {
+#vcaokwfkjd .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#vmnegukfng .gt_summary_row {
+#vcaokwfkjd .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -941,16 +952,16 @@ Table&nbsp;2: Waste recycling at home versus at the office
   padding-right: 5px;
 }
 
-#vmnegukfng .gt_first_summary_row {
+#vcaokwfkjd .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#vmnegukfng .gt_first_summary_row.thick {
+#vcaokwfkjd .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#vmnegukfng .gt_last_summary_row {
+#vcaokwfkjd .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -960,7 +971,7 @@ Table&nbsp;2: Waste recycling at home versus at the office
   border-bottom-color: #D3D3D3;
 }
 
-#vmnegukfng .gt_grand_summary_row {
+#vcaokwfkjd .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -970,7 +981,7 @@ Table&nbsp;2: Waste recycling at home versus at the office
   padding-right: 5px;
 }
 
-#vmnegukfng .gt_first_grand_summary_row {
+#vcaokwfkjd .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -980,7 +991,7 @@ Table&nbsp;2: Waste recycling at home versus at the office
   border-top-color: #D3D3D3;
 }
 
-#vmnegukfng .gt_last_grand_summary_row_top {
+#vcaokwfkjd .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -990,11 +1001,11 @@ Table&nbsp;2: Waste recycling at home versus at the office
   border-bottom-color: #D3D3D3;
 }
 
-#vmnegukfng .gt_striped {
+#vcaokwfkjd .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#vmnegukfng .gt_table_body {
+#vcaokwfkjd .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1003,7 +1014,7 @@ Table&nbsp;2: Waste recycling at home versus at the office
   border-bottom-color: #D3D3D3;
 }
 
-#vmnegukfng .gt_footnotes {
+#vcaokwfkjd .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1017,7 +1028,7 @@ Table&nbsp;2: Waste recycling at home versus at the office
   border-right-color: #D3D3D3;
 }
 
-#vmnegukfng .gt_footnote {
+#vcaokwfkjd .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1026,7 +1037,7 @@ Table&nbsp;2: Waste recycling at home versus at the office
   padding-right: 5px;
 }
 
-#vmnegukfng .gt_sourcenotes {
+#vcaokwfkjd .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1040,7 +1051,7 @@ Table&nbsp;2: Waste recycling at home versus at the office
   border-right-color: #D3D3D3;
 }
 
-#vmnegukfng .gt_sourcenote {
+#vcaokwfkjd .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1048,63 +1059,63 @@ Table&nbsp;2: Waste recycling at home versus at the office
   padding-right: 5px;
 }
 
-#vmnegukfng .gt_left {
+#vcaokwfkjd .gt_left {
   text-align: left;
 }
 
-#vmnegukfng .gt_center {
+#vcaokwfkjd .gt_center {
   text-align: center;
 }
 
-#vmnegukfng .gt_right {
+#vcaokwfkjd .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#vmnegukfng .gt_font_normal {
+#vcaokwfkjd .gt_font_normal {
   font-weight: normal;
 }
 
-#vmnegukfng .gt_font_bold {
+#vcaokwfkjd .gt_font_bold {
   font-weight: bold;
 }
 
-#vmnegukfng .gt_font_italic {
+#vcaokwfkjd .gt_font_italic {
   font-style: italic;
 }
 
-#vmnegukfng .gt_super {
+#vcaokwfkjd .gt_super {
   font-size: 65%;
 }
 
-#vmnegukfng .gt_footnote_marks {
+#vcaokwfkjd .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#vmnegukfng .gt_asterisk {
+#vcaokwfkjd .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#vmnegukfng .gt_indent_1 {
+#vcaokwfkjd .gt_indent_1 {
   text-indent: 5px;
 }
 
-#vmnegukfng .gt_indent_2 {
+#vcaokwfkjd .gt_indent_2 {
   text-indent: 10px;
 }
 
-#vmnegukfng .gt_indent_3 {
+#vcaokwfkjd .gt_indent_3 {
   text-indent: 15px;
 }
 
-#vmnegukfng .gt_indent_4 {
+#vcaokwfkjd .gt_indent_4 {
   text-indent: 20px;
 }
 
-#vmnegukfng .gt_indent_5 {
+#vcaokwfkjd .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1139,7 +1150,7 @@ Table&nbsp;2: Waste recycling at home versus at the office
 </figure>
 </div>
 </div>
-<p><a href="#fig-location" class="quarto-xref">Figure&nbsp;1</a> shows the results of waste generation and recycling by material and location. It can be seen that, in general, there is no connection between how much waste participants generated and recycled. The recycling frequency varied widely among participants; for example, participants who generated 1-2 pieces of aluminum waste per day recycled anywhere from “Never” to “Always”. Organic, paper, and plastic waste was generated most often, while electronic waste was generated very rarely (all participants generated less than one piece per day). Paper was the only material for which no participant stated that they never recycled it.</p>
+<p><a href="#fig-location" class="quarto-xref">Figure&nbsp;1</a> shows the results of waste generation and recycling by material and location. It can be seen that, in general, there is no connection between how much waste participants generated and recycled, at either location. The recycling frequency varied widely among participants; for example, participants who generated 1-2 pieces of aluminum waste per day recycled anywhere from “Never” to “Always”. Organic, paper, and plastic waste was generated most often, while electronic waste was generated very rarely (all participants generated less than one piece per day). Paper was the only material for which no participant stated that they never recycled it.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(generation_long <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(recycling)), </span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> generation, <span class="at">y =</span> recycling, <span class="at">shape =</span> location)) <span class="sc">+</span></span>
@@ -1160,13 +1171,13 @@ Table&nbsp;2: Waste recycling at home versus at the office
 <img src="index_files/figure-html/fig-location-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-location-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: Waste generation and recycling by material and location. One piece of waste could be one aluminum can, a piece of paper, a bottle, etc.
+Figure&nbsp;1: Waste generation and recycling by material and location, for each recyclable waste type. One piece of waste could be one aluminum can, a piece of paper, a bottle, etc.
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p><a href="#fig-distance" class="quarto-xref">Figure&nbsp;2</a> shows the results of waste recycling by distance to the closest recycling bin. It can be seen that, in general, there is no connection between distance to a recycling bin and the recycling frequency. In other words, participants close and far from bins both recycled “Always” and “Never”. The PET bin was most frequently very close to participant workplaces, while electronic waste bins were the farthest away. Only for paper waste did all participants know where the recycle bin is located.</p>
+<p><a href="#fig-distance" class="quarto-xref">Figure&nbsp;2</a> shows the results of waste recycling by distance to the closest recycling bin. We might expect that having a bin close by would increase the recycling rate. However, it can be seen that, in general, there is no connection between distance to a recycling bin and the recycling frequency. In other words, participants close and far from bins both recycled “Always” and “Never”. The PET bin was most frequently very close to participant workplaces, while electronic waste bins were the farthest away. Only for paper waste did all participants know where the recycle bin is located.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(distance_long <span class="sc">%&gt;%</span> <span class="fu">filter</span>(material <span class="sc">!=</span> <span class="st">"General"</span>,</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>                                <span class="sc">!</span><span class="fu">is.na</span>(distance)),</span>
@@ -1189,7 +1200,7 @@ Figure&nbsp;1: Waste generation and recycling by material and location. One piec
 <img src="index_files/figure-html/fig-distance-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-distance-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2: Recycling frequency by distance to bin.
+Figure&nbsp;2: Recycling frequency by distance to bin, for each recyclable waste type.
 </figcaption>
 </figure>
 </div>
@@ -1201,20 +1212,16 @@ Figure&nbsp;2: Recycling frequency by distance to bin.
 <p>The main findings of this study are as follows:</p>
 <ul>
 <li><p>Scientific staff generate more waste and recycle more frequently at home than at the workplace, indicating that recycling incentives should target individuals’ homes before the workplace.</p></li>
-<li><p>Waste generation and recycling frequency were not clearly connected, indicating that participant awareness of recycling practices are not connected to how much waste they generate.</p></li>
+<li><p>Waste generation and recycling frequency were not clearly connected (either at home or the place of work), indicating that participant awareness of recycling practices are not connected to how much waste they generate.</p></li>
 <li><p>Recycling frequency was not clearly connected to distance to the closest recycling bin, indicating that providing more bins may not be an efficient solution to improving recycling behavior.</p></li>
 </ul>
 <p>These findings are qualitative in nature, as more responses would be needed for quantitative and statistically significant analyses and findings.</p>
-</section>
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References</h2>
-<p>includes at least 3 citations using a bibliography.bib file exported from a collection of references on Zotero.</p>
 
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
-<div id="ref-zotero-1430" class="csl-entry" role="listitem">
-(n.d.). https://cms.bps.org.uk/sites/default/files/2022-06/DOP%20Going%20Green%20The%20Psychology%20of%20Sustainability%20in%20the%20Workplace.pdf.
+<div id="ref-zotero-1478" class="csl-entry" role="listitem">
+Bartlett, D. (2011). <em>Going <span>Green</span>: <span>The Psychology</span> of <span>Sustainability</span> in the <span>Workplace</span></em>.
 </div>
 <div id="ref-mcdonald2011green" class="csl-entry" role="listitem">
 McDonald, S. (2011). <em>Green behaviour: Difference in recycling behaviour between the home and the workplace.</em>

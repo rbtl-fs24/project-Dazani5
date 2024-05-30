@@ -11,19 +11,18 @@ date: "June 6, 2024"
 abstract: 
   Sustainability efforts require individuals to be aware of their waste generation and recycling practices. Literature has shown that workplace waste behavior is not well-understood. This project aims to improve the knowledge of waste generation and recycling behaviors of scientific staff members at ETH Zurich. Results indicate that scientific staff generate and recylc emore waste at home than at their place of work. No connection was found between either the waste generation amount or the proximity of recycling bins at work to the recycling frequency. Recycling bin provision may not be an effective method to increase recycling rates. Further work is needed to capture a larger number of and more diverse participants.
 license: "CC BY"
-format: html
+format:
+  html: 
+    toc: true
+    
 editor: visual
 csl: apa.csl
 bibliography: references.bib
-output:
-  html_document:
-    toc: true
-    toc_depth: 3
 ---
 
 ## Introduction
 
-Waste production and recycling is an important issue in global sustainability efforts. @mcdonald2011green found that Scottish commercial waste was double the domestic waste, but that workplace waste studies are less common than studies analyzing recycling at home. @oke2015workplace also found a lacking focus on at-home recycling, so they reviewed 51 previous studies to fill the gap in workplace waste streams. They found no studies in Europe outside the UK. @zotero-1430 outline the importance of organisations becoming more environmentally friendly and aware, led by programs and initiatives, but conclude "going green comes down to individual behavior" (p. 1).
+Waste production and recycling is an important issue in global sustainability efforts. @mcdonald2011green found that Scottish commercial waste was double the domestic waste, but that workplace waste studies are less common than studies analyzing recycling at home. @oke2015workplace also found a lacking focus on at-home recycling, so they reviewed 51 previous studies to fill the gap in workplace waste streams. They found no studies in Europe outside the UK. @zotero-1478 outline the importance of organisations becoming more environmentally friendly and aware, led by programs and initiatives, but conclude "going green comes down to individual behavior" (p. 1).
 
 Against this background, this project collects waste generation and recycling behavior data from scientific staff at universities, both at their place of work and at home, to compare the behaviors. This project was conducted as part of the lecture series "[Research Beyond the Lab](https://rbtl-fs24.github.io/website/)" at [ETH Zurich](https://ethz.ch/de.html).
 
@@ -156,11 +155,11 @@ facility_more %>%
   gt()
 ```
 
-@fig-location shows the results of waste generation and recycling by material and location. It can be seen that, in general, there is no connection between how much waste participants generated and recycled. The recycling frequency varied widely among participants; for example, participants who generated 1-2 pieces of aluminum waste per day recycled anywhere from "Never" to "Always". Organic, paper, and plastic waste was generated most often, while electronic waste was generated very rarely (all participants generated less than one piece per day). Paper was the only material for which no participant stated that they never recycled it.
+@fig-location shows the results of waste generation and recycling by material and location. It can be seen that, in general, there is no connection between how much waste participants generated and recycled, at either location. The recycling frequency varied widely among participants; for example, participants who generated 1-2 pieces of aluminum waste per day recycled anywhere from "Never" to "Always". Organic, paper, and plastic waste was generated most often, while electronic waste was generated very rarely (all participants generated less than one piece per day). Paper was the only material for which no participant stated that they never recycled it.
 
 ```{r}
 #| label: fig-location
-#| fig-cap: Waste generation and recycling by material and location. One piece of waste could be one aluminum can, a piece of paper, a bottle, etc.
+#| fig-cap: Waste generation and recycling by material and location, for each recyclable waste type.  One piece of waste could be one aluminum can, a piece of paper, a bottle, etc.
 #| warning: false
 ggplot(generation_long %>% filter(!is.na(recycling)), 
        aes(x = generation, y = recycling, shape = location)) +
@@ -237,11 +236,11 @@ distance_long <- data_short %>%
 
 ```
 
-@fig-distance shows the results of waste recycling by distance to the closest recycling bin. It can be seen that, in general, there is no connection between distance to a recycling bin and the recycling frequency. In other words, participants close and far from bins both recycled "Always" and "Never". The PET bin was most frequently very close to participant workplaces, while electronic waste bins were the farthest away. Only for paper waste did all participants know where the recycle bin is located.
+@fig-distance shows the results of waste recycling by distance to the closest recycling bin. We might expect that having a bin close by would increase the recycling rate. However, it can be seen that, in general, there is no connection between distance to a recycling bin and the recycling frequency. In other words, participants close and far from bins both recycled "Always" and "Never". The PET bin was most frequently very close to participant workplaces, while electronic waste bins were the farthest away. Only for paper waste did all participants know where the recycle bin is located.
 
 ```{r}
 #| label: fig-distance
-#| fig-cap: Recycling frequency by distance to bin.
+#| fig-cap: Recycling frequency by distance to bin, for each recyclable waste type.
 #| warning: false
 
 
@@ -268,12 +267,8 @@ The main findings of this study are as follows:
 
 -   Scientific staff generate more waste and recycle more frequently at home than at the workplace, indicating that recycling incentives should target individuals' homes before the workplace.
 
--   Waste generation and recycling frequency were not clearly connected, indicating that participant awareness of recycling practices are not connected to how much waste they generate.
+-   Waste generation and recycling frequency were not clearly connected (either at home or the place of work), indicating that participant awareness of recycling practices are not connected to how much waste they generate.
 
 -   Recycling frequency was not clearly connected to distance to the closest recycling bin, indicating that providing more bins may not be an efficient solution to improving recycling behavior.
 
 These findings are qualitative in nature, as more responses would be needed for quantitative and statistically significant analyses and findings.
-
-## References
-
-includes at least 3 citations using a bibliography.bib file exported from a collection of references on Zotero.
