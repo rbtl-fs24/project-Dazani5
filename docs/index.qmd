@@ -126,7 +126,7 @@ facility_more %>%
                                            "False",
                                            "The same for both locations",
                                            "I don't know"))) %>%
-  arrange(gen_more_home) %>%  # Arrange by the factor levels
+  arrange(gen_more_home) %>%  #Arrange by the factor levels
   rename("Generate more waste at home?" = gen_more_home,
          "Answers" = count) %>%
   gt()
@@ -149,7 +149,7 @@ facility_more %>%
                                            "False",
                                            "The same for both locations",
                                            "I don't know"))) %>%
-  arrange(recycle_more_home) %>%  # Arrange by the factor levels
+  arrange(recycle_more_home) %>%  #Arrange by the factor levels
   rename("Recycle more waste at home?" = recycle_more_home,
          "Answers" = count) %>%
   gt()
@@ -166,12 +166,12 @@ ggplot(generation_long %>% filter(!is.na(recycling)),
   geom_point(color = "black", size = 3) +
   facet_wrap(~material, ncol = 2) +
   labs(
-    title = NULL,  # If you don't want a title
+    title = NULL,
     x = "Generation (pieces per day)",
     y = "Recycling frequency",
     shape = "Location"
   ) +
-  scale_shape_manual(values = c(1, 4)) +  # Shapes: 1 for circle, 4 for X
+  scale_shape_manual(values = c(1, 4)) +
   theme_minimal()
 ```
 
@@ -253,7 +253,7 @@ ggplot(distance_long %>% filter(material != "General",
   theme(axis.text.x = element_text(angle = -45, hjust = 0),
         legend.position = "none") +
   labs(
-    title = NULL,  # If you don't want a title
+    title = NULL,
     x = "Distance to bin (meters)",
     y = "Recycling frequency",
     color = "Material"
