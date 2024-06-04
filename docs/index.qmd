@@ -32,6 +32,8 @@ Against this background, this project collects waste generation and recycling be
 #| echo: false
 #| warning: false
 
+#load packages
+
 library(ggplot2)
 library(tidyr)
 library(gt)
@@ -39,10 +41,12 @@ library(knitr)
 library(forcats)
 library(dplyr)
 
+#import data
 data_short <- read.csv("/cloud/project/data/processed/data_short.csv")
 
+#transform data
 generation_long <- data_short %>%
-  select(contains("home_generate"),
+  select(contains("home_generate"), #select columns of interest
          contains("work_generate"),
          contains("work_recycle"),
          contains("home_recycle")) %>%
@@ -67,7 +71,7 @@ generation_long <- data_short %>%
     grepl("recycle", var) ~ "recycling")) %>%
   select(-var) %>%
   pivot_wider(names_from = activity, values_from = value, values_fn = list) %>%
-  mutate(generation = case_when(
+  mutate(generation = case_when( #recode variables
     generation == "Less than 1 piece" ~ "<1",
     generation == "1-2 pieces" ~ "1-2",
     generation == "3-5 pieces" ~ "3-5",
@@ -83,21 +87,21 @@ generation_long <- data_short %>%
     recycling == "Don't know" ~ "Don't know")) %>%
   mutate(generation = as.character(generation),
          recycling = as.character(recycling)) %>%
-  mutate(generation = factor(generation, levels = c("<1", "1-2", "3-5", ">5", "Don't know")),
+  mutate(generation = factor(generation, levels = c("<1", "1-2", "3-5", ">5", "Don't know")), #change factor levels for plots
          recycling = factor(recycling, levels = c("Never", "10%", "30%", "60%", "90%", "Always", "Don't know")))
 
-facility_more <- data_short %>%
+facility_more <- data_short %>% #data for tables
   select(("work_facilities"),
          ("work_waste_knowledge"),
          ("home_waste_knowledge"),
          ("gen_more_home"),
          ("recycle_more_home")) %>%
-  mutate(gen_more_home = case_when(
+  mutate(gen_more_home = case_when( #data for generation
     gen_more_home == "TRUE" ~ "True",
     gen_more_home ==  "FALSE" ~ "False",
     TRUE ~ gen_more_home
   )) %>%
-  mutate(recycle_more_home = case_when(
+  mutate(recycle_more_home = case_when( #data for recycling frequency
     recycle_more_home == "TRUE" ~ "True",
     recycle_more_home ==  "FALSE" ~ "False",
     TRUE ~ recycle_more_home
@@ -118,16 +122,16 @@ The data was analysed using the open-source statistical software R.
 #| warning: false
 
 
-facility_more %>%
+facility_more %>% #generate table data
   group_by(gen_more_home) %>%
   summarise(count = n()) %>%
-  mutate(gen_more_home = factor(gen_more_home,
+  mutate(gen_more_home = factor(gen_more_home, #order using factor levels
                                 levels = c("True",
                                            "False",
                                            "The same for both locations",
                                            "I don't know"))) %>%
-  arrange(gen_more_home) %>%  #Arrange by the factor levels
-  rename("Generate more waste at home?" = gen_more_home,
+  arrange(gen_more_home) %>%  #arrange by the factor levels
+  rename("Generate more waste at home?" = gen_more_home, #rename columns
          "Answers" = count) %>%
   gt()
 
@@ -141,16 +145,16 @@ facility_more %>%
 #| warning: false
 
 
-facility_more %>%
+facility_more %>% #generate table data
   group_by(recycle_more_home) %>%
   summarise(count = n()) %>%
-  mutate(recycle_more_home = factor(recycle_more_home,
+  mutate(recycle_more_home = factor(recycle_more_home, #order using factor levels
                                 levels = c("True",
                                            "False",
                                            "The same for both locations",
                                            "I don't know"))) %>%
-  arrange(recycle_more_home) %>%  #Arrange by the factor levels
-  rename("Recycle more waste at home?" = recycle_more_home,
+  arrange(recycle_more_home) %>%  #arrange by the factor levels
+  rename("Recycle more waste at home?" = recycle_more_home, #rename columns
          "Answers" = count) %>%
   gt()
 ```
@@ -161,12 +165,13 @@ facility_more %>%
 #| label: fig-location
 #| fig-cap: Waste generation and recycling by material and location, for each recyclable waste type.  One piece of waste could be one aluminum can, a piece of paper, a bottle, etc.
 #| warning: false
-ggplot(generation_long %>% filter(!is.na(recycling)), 
+#| 
+ggplot(generation_long %>% filter(!is.na(recycling)),  #remove incomplete responses (when using pre-survey data)
        aes(x = generation, y = recycling, shape = location)) +
   geom_point(color = "black", size = 3) +
   facet_wrap(~material, ncol = 2) +
   labs(
-    title = NULL,
+    title = NULL, #remove plot title
     x = "Generation (pieces per day)",
     y = "Recycling frequency",
     shape = "Location"
@@ -179,8 +184,8 @@ ggplot(generation_long %>% filter(!is.na(recycling)),
 #| echo: false
 #| warning: false
 
-distance_long <- data_short %>%
-  select(contains("work_dist"),
+distance_long <- data_short %>% #data for plot on distances
+  select(contains("work_dist"), #select columns for distance and recycling frequency
          contains("work_recycle")) %>%
   mutate(id = row_number()) %>%
   pivot_longer(cols = -id, names_to = "var", values_to = "value") %>%
@@ -199,7 +204,7 @@ distance_long <- data_short %>%
     grepl("recycle", var) ~ "recycling")) %>%
   select(-var) %>%
   pivot_wider(names_from = activity, values_from = value, values_fn = list) %>%
-  mutate(recycling = case_when(
+  mutate(recycling = case_when( #recode variables for plot
     recycling == "Never" ~ "Never",
     recycling == "10% of the time" ~ "10%",
     recycling == "30% of the time" ~ "30%",
@@ -209,7 +214,7 @@ distance_long <- data_short %>%
     recycling == "Don't know" ~ "Don't know")) %>%
   mutate(distance = as.character(distance),
          recycling = as.character(recycling)) %>%
-  mutate(recycling = factor(recycling, levels = c("Never", "10%", "30%", "60%", "90%", "Always", "Don't know"))) %>%
+  mutate(recycling = factor(recycling, levels = c("Never", "10%", "30%", "60%", "90%", "Always", "Don't know"))) %>% #factor levels for plot
   mutate(distance = factor(distance, levels = c("0-5 meters", "5-20 meters", "20-50 meters", "50-100 meters", "Over 100 meters", "Don't know")),
          distance = fct_recode(distance,
                                "0-5" = "0-5 meters",
@@ -218,14 +223,14 @@ distance_long <- data_short %>%
                                "50-100" = "50-100 meters",
                                "Over 100" = "Over 100 meters",
                                "Don't know" = "Don't know")) %>%
-  mutate(distance_cont = case_when(
+  mutate(distance_cont = case_when( #in case continuous values are needed for regression, etc.
     distance == "0-5 meters" ~ 2.5,
     distance == "5-20 meters" ~ 12.5,
     distance == "20-50 meters" ~ 35,
     distance == "50-100 meters" ~ 75,
     distance == "Over 100 meters" ~ 125,
     distance == "Don't know" ~ NA)) %>%
-  mutate(recycling_cont = case_when(
+  mutate(recycling_cont = case_when( #in case continuous values are needed for regression, etc.
     recycling == "Never" ~ 0,
     recycling == "10% of the time" ~ 10,
     recycling == "30% of the time" ~ 30,
@@ -245,15 +250,15 @@ distance_long <- data_short %>%
 
 
 ggplot(distance_long %>% filter(material != "General",
-                                !is.na(distance)),
+                                !is.na(distance)), #remove incomplete responses (when using pre-survey data)
        aes(x=distance, y=recycling, color = material)) +
   geom_point() +
   facet_wrap(~material, ncol = 2) +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = -45, hjust = 0),
-        legend.position = "none") +
+        legend.position = "none") + #remove legend title
   labs(
-    title = NULL,
+    title = NULL, #remove plot title
     x = "Distance to bin (meters)",
     y = "Recycling frequency",
     color = "Material"
