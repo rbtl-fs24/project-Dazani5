@@ -41,8 +41,9 @@ library(knitr)
 library(forcats)
 library(dplyr)
 
+
 #import data
-data_short <- read.csv("/cloud/project/data/processed/data_short.csv")
+data_short <- read.csv(here::here("data/processed/data_short.csv"))
 
 #transform data
 generation_long <- data_short %>%
